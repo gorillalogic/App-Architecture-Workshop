@@ -11,7 +11,6 @@ public class ServiceLocator {
     public lazy var localService: DataService = LocalDataProvider()
     public lazy var httpService: DataService = HttpDataProvider()
     public lazy var mockedList: DataService = MockedPokeService()
-    public lazy var loggerService: LoggingService = LoggerService()
     public lazy var favoriteService: FavoriteService = FavoritesProvider()
     
     public init() { }
