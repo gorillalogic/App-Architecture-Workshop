@@ -9,8 +9,28 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        TabView {
+            
+            NavigationView {
+                ListView(viewModel: .init(store: .init(initialState: .init(), reducer: .init())))
+            }
+            .tabItem {
+                VStack {
+                    Image(systemName: "list.star")
+                    Text("Pets")
+                }
+            }
+            
+            NavigationView {
+                FavoritesView()
+            }
+            .tabItem {
+                VStack {
+                    Image(systemName: "heart.fill")
+                    Text("Favorites")
+                }
+            }
+        }
     }
 }
 

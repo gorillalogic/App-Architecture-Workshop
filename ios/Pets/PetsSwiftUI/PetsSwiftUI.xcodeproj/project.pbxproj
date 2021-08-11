@@ -16,6 +16,15 @@
 		A80DCC7126C45A330056DF9D /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC7026C45A330056DF9D /* Domain */; };
 		A80DCC7326C45A330056DF9D /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC7226C45A330056DF9D /* Models */; };
 		A80DCC7526C45A330056DF9D /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC7426C45A330056DF9D /* Services */; };
+		A80DCC8226C45B7B0056DF9D /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DCC8126C45B7B0056DF9D /* ListView.swift */; };
+		A80DCC8426C45B830056DF9D /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DCC8326C45B830056DF9D /* FavoritesView.swift */; };
+		A80DCC8726C468800056DF9D /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DCC8626C468800056DF9D /* ItemView.swift */; };
+		A80DCC8A26C4688F0056DF9D /* FavoriteItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DCC8926C4688F0056DF9D /* FavoriteItemView.swift */; };
+		A80DCC8D26C4689C0056DF9D /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DCC8C26C4689C0056DF9D /* DetailView.swift */; };
+		A80DCC9226C46C990056DF9D /* ViewModels in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC9126C46C990056DF9D /* ViewModels */; };
+		A80DCC9726C46EEB0056DF9D /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DCC9626C46EEB0056DF9D /* CardView.swift */; };
+		A80DCC9D26C4773E0056DF9D /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC9C26C4773E0056DF9D /* URLImageStore */; };
+		A80DCC9F26C4773E0056DF9D /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC9E26C4773E0056DF9D /* URLImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +35,12 @@
 		A80DCC4326C4590E0056DF9D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A80DCC4526C4590E0056DF9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A80DCC6B26C459DB0056DF9D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		A80DCC8126C45B7B0056DF9D /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		A80DCC8326C45B830056DF9D /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		A80DCC8626C468800056DF9D /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		A80DCC8926C4688F0056DF9D /* FavoriteItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemView.swift; sourceTree = "<group>"; };
+		A80DCC8C26C4689C0056DF9D /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		A80DCC9626C46EEB0056DF9D /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,9 +48,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A80DCC9D26C4773E0056DF9D /* URLImageStore in Frameworks */,
 				A80DCC7526C45A330056DF9D /* Services in Frameworks */,
 				A80DCC7326C45A330056DF9D /* Models in Frameworks */,
+				A80DCC9226C46C990056DF9D /* ViewModels in Frameworks */,
 				A80DCC7126C45A330056DF9D /* Domain in Frameworks */,
+				A80DCC9F26C4773E0056DF9D /* URLImage in Frameworks */,
 				A80DCC6F26C45A330056DF9D /* Architecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -63,6 +81,10 @@
 		A80DCC3B26C4590C0056DF9D /* PetsSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				A80DCC9526C46EE00056DF9D /* Views */,
+				A80DCC8B26C468950056DF9D /* Detail */,
+				A80DCC8026C45B6C0056DF9D /* Favorites */,
+				A80DCC7F26C45B640056DF9D /* List */,
 				A80DCC3C26C4590C0056DF9D /* PetsSwiftUIApp.swift */,
 				A80DCC3E26C4590C0056DF9D /* ContentView.swift */,
 				A80DCC4026C4590E0056DF9D /* Assets.xcassets */,
@@ -88,6 +110,56 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A80DCC7F26C45B640056DF9D /* List */ = {
+			isa = PBXGroup;
+			children = (
+				A80DCC8526C468790056DF9D /* Items */,
+				A80DCC8126C45B7B0056DF9D /* ListView.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		A80DCC8026C45B6C0056DF9D /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				A80DCC8826C468850056DF9D /* Items */,
+				A80DCC8326C45B830056DF9D /* FavoritesView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		A80DCC8526C468790056DF9D /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				A80DCC8626C468800056DF9D /* ItemView.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		A80DCC8826C468850056DF9D /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				A80DCC8926C4688F0056DF9D /* FavoriteItemView.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		A80DCC8B26C468950056DF9D /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				A80DCC8C26C4689C0056DF9D /* DetailView.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
+		A80DCC9526C46EE00056DF9D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A80DCC9626C46EEB0056DF9D /* CardView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,6 +181,9 @@
 				A80DCC7026C45A330056DF9D /* Domain */,
 				A80DCC7226C45A330056DF9D /* Models */,
 				A80DCC7426C45A330056DF9D /* Services */,
+				A80DCC9126C46C990056DF9D /* ViewModels */,
+				A80DCC9C26C4773E0056DF9D /* URLImageStore */,
+				A80DCC9E26C4773E0056DF9D /* URLImage */,
 			);
 			productName = PetsSwiftUI;
 			productReference = A80DCC3926C4590C0056DF9D /* PetsSwiftUI.app */;
@@ -137,6 +212,9 @@
 				Base,
 			);
 			mainGroup = A80DCC3026C4590C0056DF9D;
+			packageReferences = (
+				A80DCC9B26C4773E0056DF9D /* XCRemoteSwiftPackageReference "url-image" */,
+			);
 			productRefGroup = A80DCC3A26C4590C0056DF9D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -164,8 +242,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A80DCC8426C45B830056DF9D /* FavoritesView.swift in Sources */,
 				A80DCC3F26C4590C0056DF9D /* ContentView.swift in Sources */,
 				A80DCC3D26C4590C0056DF9D /* PetsSwiftUIApp.swift in Sources */,
+				A80DCC8D26C4689C0056DF9D /* DetailView.swift in Sources */,
+				A80DCC8726C468800056DF9D /* ItemView.swift in Sources */,
+				A80DCC8226C45B7B0056DF9D /* ListView.swift in Sources */,
+				A80DCC9726C46EEB0056DF9D /* CardView.swift in Sources */,
+				A80DCC8A26C4688F0056DF9D /* FavoriteItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +437,17 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		A80DCC9B26C4773E0056DF9D /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		A80DCC6E26C45A330056DF9D /* Architecture */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -369,6 +464,20 @@
 		A80DCC7426C45A330056DF9D /* Services */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Services;
+		};
+		A80DCC9126C46C990056DF9D /* ViewModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ViewModels;
+		};
+		A80DCC9C26C4773E0056DF9D /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A80DCC9B26C4773E0056DF9D /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
+		};
+		A80DCC9E26C4773E0056DF9D /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A80DCC9B26C4773E0056DF9D /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

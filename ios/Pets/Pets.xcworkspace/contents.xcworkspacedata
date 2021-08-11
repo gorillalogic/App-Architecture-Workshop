@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:ViewModels">
+   </FileRef>
+   <FileRef
       location = "group:PetsUIKit/PetsUIKit.xcodeproj">
    </FileRef>
    <FileRef

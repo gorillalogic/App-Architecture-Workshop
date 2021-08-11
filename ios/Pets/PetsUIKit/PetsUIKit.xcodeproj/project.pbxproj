@@ -17,6 +17,7 @@
 		A80DCC7A26C45A3C0056DF9D /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC7926C45A3C0056DF9D /* Domain */; };
 		A80DCC7C26C45A3C0056DF9D /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC7B26C45A3C0056DF9D /* Models */; };
 		A80DCC7E26C45A3D0056DF9D /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC7D26C45A3D0056DF9D /* Services */; };
+		A80DCC9426C46CA30056DF9D /* ViewModels in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC9326C46CA30056DF9D /* ViewModels */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 			files = (
 				A80DCC7E26C45A3D0056DF9D /* Services in Frameworks */,
 				A80DCC7C26C45A3C0056DF9D /* Models in Frameworks */,
+				A80DCC9426C46CA30056DF9D /* ViewModels in Frameworks */,
 				A80DCC7A26C45A3C0056DF9D /* Domain in Frameworks */,
 				A80DCC7826C45A3C0056DF9D /* Architecture in Frameworks */,
 			);
@@ -104,6 +106,7 @@
 				A80DCC7926C45A3C0056DF9D /* Domain */,
 				A80DCC7B26C45A3C0056DF9D /* Models */,
 				A80DCC7D26C45A3D0056DF9D /* Services */,
+				A80DCC9326C46CA30056DF9D /* ViewModels */,
 			);
 			productName = PetsUIKit;
 			productReference = A80DCC5426C459260056DF9D /* PetsUIKit.app */;
@@ -380,6 +383,10 @@
 		A80DCC7D26C45A3D0056DF9D /* Services */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Services;
+		};
+		A80DCC9326C46CA30056DF9D /* ViewModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ViewModels;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
