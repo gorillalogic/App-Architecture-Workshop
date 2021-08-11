@@ -13,5 +13,5 @@ public protocol LoggingAction {
 }
 
 public protocol LoggingService {
-    func log(action: LoggingAction) -> AnyPublisher<Void, Never>
+    func log(action: LoggingAction)
 }

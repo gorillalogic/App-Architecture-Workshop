@@ -10,8 +10,7 @@ import Combine
 import os
 
 struct LogProvider: LoggingService {
-    func log(action: LoggingAction) -> AnyPublisher<Void, Never> {
+    func log(action: LoggingAction) {
         os_log("User %{public}@ logged in", action.logDescription)
-        return Empty().eraseToAnyPublisher()
     }
 }

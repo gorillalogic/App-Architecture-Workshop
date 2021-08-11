@@ -11,6 +11,7 @@ import Models
 
 public protocol FavoriteService {
     func fetchFavorites() -> Set<Int>
+    func fetchList() -> AnyPublisher<Pets, Error>
     func addToFavorites(id: Int)
     func removeFromFavorites(id: Int)
 }

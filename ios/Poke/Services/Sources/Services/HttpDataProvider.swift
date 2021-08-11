@@ -22,18 +22,4 @@ final class HttpDataProvider: DataService {
             .decode(type: Pets.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
-    
-    func getItem(id: Int) -> AnyPublisher<Pet, Error> {
-        guard let url = URL(string: listEndpoint) else {
-            return Empty().eraseToAnyPublisher()
-        }
-        
-        return URLSession.shared.dataTaskPublisher(for: url)
-            .map(\.data)
-            .decode(type: Pets.self, decoder: JSONDecoder())
-            .compactMap { $0.first { pet in
-                pet.id == id
-            } }
-            .eraseToAnyPublisher()
-    }
 }

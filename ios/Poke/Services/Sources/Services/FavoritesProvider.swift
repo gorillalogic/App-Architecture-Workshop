@@ -17,7 +17,7 @@ final class FavoritesProvider: FavoriteService {
         return Set(storedIds ?? [])
     }
     
-    public func fetchPokemon() -> AnyPublisher<Pets, Error> {
+    public func fetchList() -> AnyPublisher<Pets, Error> {
         let storedIds = UserDefaults.standard.array(forKey: "com.gorillalogic.architecture.favorites") as? [Int]
         return (storedIds ?? []).publisher
             .flatMap { self.getPet(id: $0) }

@@ -18,3 +18,4 @@ import Foundation
     case fetchIsFavorite(id: Int)
     case fetchIsFavoriteCompleted(Bool)
 }
+

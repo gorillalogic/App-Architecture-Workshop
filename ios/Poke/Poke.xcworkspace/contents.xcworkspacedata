@@ -13,10 +13,4 @@
    <FileRef
       location = "group:Models">
    </FileRef>
-   <FileRef
-      location = "group:PokeSwiftUI/PokeSwiftUI.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:PokeUIKit/PokeUIKit.xcodeproj">
-   </FileRef>
 </Workspace>

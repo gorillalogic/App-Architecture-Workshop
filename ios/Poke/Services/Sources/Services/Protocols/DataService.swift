@@ -11,5 +11,4 @@ import Models
 
 public protocol DataService {
     func getList() -> AnyPublisher<Pets, Error>
-    func getItem(id: Int) -> AnyPublisher<Pet, Error>
 }

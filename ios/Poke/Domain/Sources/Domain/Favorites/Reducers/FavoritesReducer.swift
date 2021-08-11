@@ -9,12 +9,13 @@ import Architecture
 import Services
 import Combine
 
-public class FavoritesReducer: Reducing, Depending {
+public struct FavoritesReducer: Reducing, Depending {
     public typealias State = FavoritesState
     public typealias Event = FavoritesEvent
     
     public struct Dependencies {
         public var service: FavoriteService = ServiceLocator().favoriteService
+        public var logService: LoggingService = ServiceLocator().logService
     }
     
     public var dependencies = Dependencies()
@@ -26,10 +27,10 @@ public class FavoritesReducer: Reducing, Depending {
         switch event {
         case .removeFromFavorites(let id):
             state.list.removeAll(where: { $0.id == id })
-        case .fetchPokemonCompleted(let list):
+        case .fetchListCompleted(let list):
             state.list = list
             state.isLoading = false
-        case .fetchPokemon:
+        case .fetchList:
             state.isLoading = true
             break
         }
@@ -38,18 +39,19 @@ public class FavoritesReducer: Reducing, Depending {
     }
     
     private func sideEffect(event: Event) -> Effect<Event> {
+        dependencies.logService.log(action: event)
         switch event {
-        case .fetchPokemon:
-            return dependencies.service.fetchPokemon()
-                .map { FavoritesEvent.fetchPokemonCompleted(pokemon: $0) }
+        case .fetchList:
+            return dependencies.service.fetchList()
+                .map(FavoritesEvent.fetchListCompleted)
                 .catch { error in
-                    return Just(.fetchPokemonCompleted(pokemon: []))
+                    return Just(.fetchListCompleted(pets: []))
                 }
                 .eraseToAnyPublisher()
             
         case .removeFromFavorites(let id):
             dependencies.service.removeFromFavorites(id: id)
-        case .fetchPokemonCompleted:
+        case .fetchListCompleted:
             break
         }
         return nil

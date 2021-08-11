@@ -18,8 +18,7 @@ public final class Store<State, Event, Reducer: Reducing>: StoreType where Reduc
     
     @Published private(set) public var state: State
     
-    required public init(initialState: State,
-         reducer: Reducer) {
+    required public init(initialState: State, reducer: Reducer) {
         self.state = initialState
         self.reducer = reducer
     }

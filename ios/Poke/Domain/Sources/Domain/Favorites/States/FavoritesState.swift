@@ -10,13 +10,26 @@ import Models
 import Services
 
 @frozen public struct FavoritesState {
-    public var list: [Pokemon] = []
+    public var list: Pets = []
     public var isLoading: Bool = false
     public init() { }
 }
 
 @frozen public enum FavoritesEvent {
-    case fetchPokemon
-    case fetchPokemonCompleted(pokemon: [Pokemon])
+    case fetchList
+    case fetchListCompleted(pets: Pets)
     case removeFromFavorites(id: Int)
+}
+
+extension FavoritesEvent: LoggingAction {
+    public var logDescription: String {
+        switch self {
+        case .fetchList:
+            return "Action - Fetching favorites list"
+        case .fetchListCompleted:
+            return "Action - Completed Fetching favorites"
+        case .removeFromFavorites:
+            return "Action - Removed item from favorites"
+        }
+    }
 }

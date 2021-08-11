@@ -10,7 +10,7 @@ import Models
 import Services
 
 @frozen public struct ListState {
-    public var list: [Pokemon] = []
+    public var list: Pets = []
     public var isLoading = false
     
     public init() {
@@ -19,6 +19,6 @@ import Services
 }
 
 @frozen public enum ListEvent {
-    case fetchPokemon
-    case fetchPokemonCompleted(pokemon: [Pokemon])
+    case fetchList
+    case fetchListCompleted(pets: Pets)
 }
