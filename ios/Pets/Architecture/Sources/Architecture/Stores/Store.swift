@@ -14,7 +14,7 @@ fileprivate typealias StoreType = ObservableObject & Dispatching
 public final class Store<State, Event, Reducer: Reducing>: StoreType where Reducer.State == State, Reducer.Event == Event {
     
     private let reducer: Reducer
-    private var effectsCancellable: AnyCancellable?
+    private var cancellables: Set<AnyCancellable> = []
     
     @Published private(set) public var state: State
     
@@ -28,8 +28,9 @@ public final class Store<State, Event, Reducer: Reducing>: StoreType where Reduc
             return
         }
         
-        effectsCancellable = publisher
+        publisher
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: dispatch)
+            .store(in: &cancellables)
     }
 }

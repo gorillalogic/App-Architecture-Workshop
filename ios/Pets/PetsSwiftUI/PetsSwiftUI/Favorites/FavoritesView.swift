@@ -6,15 +6,37 @@
 //
 
 import SwiftUI
+import Architecture
+import ViewModels
 
-struct FavoritesView: View {
+struct FavoritesView: View, ViewConfigurable {
+    @ObservedObject var  viewModel: FavoritesViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            LazyVStack {
+                ForEach(viewModel.state.list) { pet in
+                    PetRow(model: pet, onClickLike: {
+                        viewModel.dispatch(event: .removeFromFavorites(id: pet.id))
+                    })
+                        .frame(height: 100)
+                }
+                .padding()
+            }
+            if viewModel.state.isLoading {
+                ProgressView()
+            }
+        }
+        .navigationTitle("Favorites")
+        .onAppear(perform: fetchData)
+    }
+    
+    private func fetchData() {
+        viewModel.dispatch(event: .fetchList)
     }
 }
 
 struct FavoritesView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoritesView()
+        FavoritesView(viewModel: .init(store: .init(initialState: .init(), reducer: .init())))
     }
 }

@@ -1,5 +1,5 @@
 //
-//  CardView.swift
+//  PetRow.swift
 //  PetsSwiftUI
 //
 //  Created by Dylan Velez on 11/08/21.
@@ -9,16 +9,15 @@ import SwiftUI
 import Models
 import URLImage
 
-struct CardView: View {
+struct PetRow: View {
     var model: Pet
-    var isFavorite: Bool
     var onClickLike: () -> Void
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 25)
+            RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
                 .shadow(radius: 10)
-            VStack {
+            HStack {
                 URLImage(URL(string: model.petImage)!) {
                     Image("pawprint")
                         .resizable()
@@ -35,31 +34,29 @@ struct CardView: View {
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                 }
-                HStack {
-                    Spacer()
-                        .frame(width: 20)
-                    Text(model.name)
-                        .font(.largeTitle)
+                Spacer()
+                    .frame(width: 20)
+                Text(model.name)
+                    .font(.largeTitle)
+                    .foregroundColor(.purple)
+                Spacer()
+                Button(action: onClickLike) {
+                    Image(systemName: "heart.fill")
+                        .imageScale(.large)
                         .foregroundColor(.purple)
-                    Spacer()
-                    Button(action: onClickLike) {
-                        Image(systemName: isFavorite ? "heart.fill" : "heart")
-                            .imageScale(.large)
-                            .foregroundColor(.purple)
-                    }
-                    .buttonStyle(PlainButtonStyle())
-                    Spacer()
-                        .frame(width: 20)
                 }
+                .buttonStyle(PlainButtonStyle())
+                Spacer()
+                    .frame(width: 20)
             }
         }
-        .frame(height: 300)
+        .frame(height: 100)
     }
 }
 
-struct CardView_Previews: PreviewProvider {
+struct PetRow_Previews: PreviewProvider {
     static var previews: some View {
         let model = Pet(id: 1, name: "Scottie", breed: "Golden", sex: "Male", age: 5, color: "Brown", weight: 16, petDescription: "No Description", petImage: "https://learning-challenge.herokuapp.com/images/pet-1.jpg", vaccines: [], owner: .init(name: "Dylan", phone: "", email: "", address: ""))
-        CardView(model: model, isFavorite: false, onClickLike: {})
+        PetRow(model: model, onClickLike: {})
     }
 }

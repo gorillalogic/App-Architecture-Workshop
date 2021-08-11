@@ -16,6 +16,7 @@ public struct ListReducer: Reducing, Depending {
     
     public struct Dependencies {
         public var listService: DataService = ServiceLocator().httpService
+        public var favoriteService: FavoriteService = ServiceLocator().favoriteService
     }
     
     public var dependencies = Dependencies()
@@ -27,9 +28,19 @@ public struct ListReducer: Reducing, Depending {
         case .fetchList:
             state.list = []
             state.isLoading = true
-        case .fetchListCompleted(let newPokemon):
-            state.list = newPokemon
+        case .fetchListCompleted(let newPets):
+            state.list = newPets
             state.isLoading = false
+        case .fetchFavorites:
+            state.favorites = []
+        case .fetchFavoritesCompleted(let favorites):
+            state.favorites =  favorites
+        case .addToFavorites(let id):
+            if let favorite = state.list.first(where: {$0.id == id}) {
+                state.favorites.append(favorite)
+            }
+        case .removeFromFavorites(let id):
+            state.favorites.removeAll { $0.id == id }
         }
         
         return sideEffect(event: event)
@@ -42,8 +53,18 @@ public struct ListReducer: Reducing, Depending {
                 .map(Event.fetchListCompleted)
                 .replaceError(with: .fetchListCompleted(pets: []))
                 .eraseToAnyPublisher()
-        case .fetchListCompleted:
+        case .fetchFavorites:
+            return dependencies.favoriteService.fetchList()
+                .map(Event.fetchFavoritesCompleted)
+                .replaceError(with: Event.fetchFavoritesCompleted(pets: []))
+                .eraseToAnyPublisher()
+        case .addToFavorites(let id):
+            dependencies.favoriteService.addToFavorites(id: id)
+        case .removeFromFavorites(let id):
+            dependencies.favoriteService.removeFromFavorites(id: id)
+        case .fetchListCompleted, .fetchFavoritesCompleted:
             return nil
         }
+        return nil
     }
 }

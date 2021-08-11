@@ -14,11 +14,20 @@ struct ListView: View, ViewConfigurable {
     @ObservedObject var viewModel: ListViewModel
     var body: some View {
         ScrollView {
-            ForEach(viewModel.state.list) { pet in
-                CardView(model: pet)
-                    .frame(height: 300)
+            LazyVStack {
+                ForEach(viewModel.state.list) { pet in
+                    CardView(model: pet, isFavorite: viewModel.state.favorites.contains(pet),
+                             onClickLike: {
+                                if viewModel.state.favorites.contains(pet) {
+                                    viewModel.dispatch(event: .removeFromFavorites(id: pet.id))
+                                } else {
+                                    viewModel.dispatch(event: .addToFavorites(id: pet.id))
+                                }
+                             })
+                        .frame(height: 300)
+                }
+                .padding()
             }
-            .padding()
             if viewModel.state.isLoading {
                 ProgressView()
             }
@@ -29,6 +38,7 @@ struct ListView: View, ViewConfigurable {
     
     private func fetchData() {
         viewModel.dispatch(event: .fetchList)
+        viewModel.dispatch(event: .fetchFavorites)
     }
 }
 

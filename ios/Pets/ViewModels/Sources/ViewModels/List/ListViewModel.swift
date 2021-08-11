@@ -17,6 +17,7 @@ public final class ListViewModel: ViewModel {
     
     public struct ViewState {
         public var list: Pets = []
+        public var favorites: Pets = []
         public var isLoading: Bool = false
     }
     
@@ -37,5 +38,6 @@ public final class ListViewModel: ViewModel {
             }
         }
         self.state.isLoading = newState.isLoading
+        self.state.favorites = newState.favorites
     }
 }

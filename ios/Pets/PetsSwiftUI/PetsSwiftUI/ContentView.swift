@@ -10,7 +10,6 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            
             NavigationView {
                 ListView(viewModel: .init(store: .init(initialState: .init(), reducer: .init())))
             }
@@ -22,7 +21,7 @@ struct ContentView: View {
             }
             
             NavigationView {
-                FavoritesView()
+                FavoritesView(viewModel: .init(store: .init(initialState: .init(), reducer: .init())))
             }
             .tabItem {
                 VStack {

@@ -11,6 +11,7 @@ import Services
 
 @frozen public struct ListState {
     public var list: Pets = []
+    public var favorites: Pets = []
     public var isLoading = false
     
     public init() {
@@ -20,5 +21,9 @@ import Services
 
 @frozen public enum ListEvent {
     case fetchList
+    case fetchFavorites
     case fetchListCompleted(pets: Pets)
+    case fetchFavoritesCompleted(pets: Pets)
+    case addToFavorites(id: Int)
+    case removeFromFavorites(id: Int)
 }
