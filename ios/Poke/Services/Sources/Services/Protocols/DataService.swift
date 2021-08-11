@@ -10,5 +10,6 @@ import Combine
 import Models
 
 public protocol DataService {
-    func getPokemonList() -> AnyPublisher<[Pokemon], Error>
+    func getList() -> AnyPublisher<Pets, Error>
+    func getItem(id: Int) -> AnyPublisher<Pet, Error>
 }

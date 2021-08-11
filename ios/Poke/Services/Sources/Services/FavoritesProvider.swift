@@ -10,17 +10,17 @@ import Combine
 import Models
 
 final class FavoritesProvider: FavoriteService {
-    private var listEndpoint = "https://pokeapi.co/api/v2/pokemon/"
+    private var listEndpoint = "https://learning-challenge.herokuapp.com/pets"
     
     public func fetchFavorites() -> Set<Int> {
         let storedIds = UserDefaults.standard.array(forKey: "com.gorillalogic.architecture.favorites") as? [Int]
         return Set(storedIds ?? [])
     }
     
-    public func fetchPokemon() -> AnyPublisher<[Pokemon], Error> {
+    public func fetchPokemon() -> AnyPublisher<Pets, Error> {
         let storedIds = UserDefaults.standard.array(forKey: "com.gorillalogic.architecture.favorites") as? [Int]
         return (storedIds ?? []).publisher
-            .flatMap { self.getPokemon(id: $0) }
+            .flatMap { self.getPet(id: $0) }
             .collect()
             .eraseToAnyPublisher()
     }
@@ -39,14 +39,17 @@ final class FavoritesProvider: FavoriteService {
         UserDefaults.standard.set(Array(setOfIds), forKey: "com.gorillalogic.architecture.favorites")
     }
     
-    private func getPokemon(id: Int) -> AnyPublisher<Pokemon, Error> {
-        guard let url = URL(string: "\(listEndpoint)\(id)/") else {
+    private func getPet(id: Int) -> AnyPublisher<Pet, Error> {
+        guard let url = URL(string: listEndpoint) else {
             return Empty().eraseToAnyPublisher()
         }
         
         return URLSession.shared.dataTaskPublisher(for: url)
             .map(\.data)
-            .decode(type: Pokemon.self, decoder: JSONDecoder())
+            .decode(type: Pets.self, decoder: JSONDecoder())
+            .compactMap { $0.first { pet in
+                pet.id == id
+            } }
             .eraseToAnyPublisher()
     }
 }
