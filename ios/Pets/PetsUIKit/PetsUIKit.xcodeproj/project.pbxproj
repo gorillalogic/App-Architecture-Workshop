@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A80DCC5826C459260056DF9D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DCC5726C459260056DF9D /* AppDelegate.swift */; };
 		A80DCC5A26C459260056DF9D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DCC5926C459260056DF9D /* SceneDelegate.swift */; };
-		A80DCC5C26C459260056DF9D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A80DCC5B26C459260056DF9D /* ViewController.swift */; };
 		A80DCC5F26C459260056DF9D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80DCC5D26C459260056DF9D /* Main.storyboard */; };
 		A80DCC6126C459270056DF9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A80DCC6026C459270056DF9D /* Assets.xcassets */; };
 		A80DCC6426C459270056DF9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A80DCC6226C459270056DF9D /* LaunchScreen.storyboard */; };
@@ -18,17 +17,29 @@
 		A80DCC7C26C45A3C0056DF9D /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC7B26C45A3C0056DF9D /* Models */; };
 		A80DCC7E26C45A3D0056DF9D /* Services in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC7D26C45A3D0056DF9D /* Services */; };
 		A80DCC9426C46CA30056DF9D /* ViewModels in Frameworks */ = {isa = PBXBuildFile; productRef = A80DCC9326C46CA30056DF9D /* ViewModels */; };
+		A8FA5E5A26C5B4EB00A52E29 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FA5E5926C5B4EB00A52E29 /* ListViewController.swift */; };
+		A8FA5E5C26C5B4F600A52E29 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FA5E5B26C5B4F600A52E29 /* FavoritesViewController.swift */; };
+		A8FA5E6326C5B90400A52E29 /* FavoriteItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FA5E6126C5B90400A52E29 /* FavoriteItemTableViewCell.swift */; };
+		A8FA5E6426C5B90400A52E29 /* FavoriteItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8FA5E6226C5B90400A52E29 /* FavoriteItemTableViewCell.xib */; };
+		A8FA5E6726C5B91800A52E29 /* ListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8FA5E6526C5B91800A52E29 /* ListItemTableViewCell.swift */; };
+		A8FA5E6826C5B91800A52E29 /* ListItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A8FA5E6626C5B91800A52E29 /* ListItemTableViewCell.xib */; };
+		A8FA5E6B26C5C84000A52E29 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = A8FA5E6A26C5C84000A52E29 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A80DCC5426C459260056DF9D /* PetsUIKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PetsUIKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A80DCC5726C459260056DF9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A80DCC5926C459260056DF9D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A80DCC5B26C459260056DF9D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A80DCC5E26C459260056DF9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A80DCC6026C459270056DF9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A80DCC6326C459270056DF9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A80DCC6526C459270056DF9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A8FA5E5926C5B4EB00A52E29 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		A8FA5E5B26C5B4F600A52E29 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		A8FA5E6126C5B90400A52E29 /* FavoriteItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemTableViewCell.swift; sourceTree = "<group>"; };
+		A8FA5E6226C5B90400A52E29 /* FavoriteItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteItemTableViewCell.xib; sourceTree = "<group>"; };
+		A8FA5E6526C5B91800A52E29 /* ListItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemTableViewCell.swift; sourceTree = "<group>"; };
+		A8FA5E6626C5B91800A52E29 /* ListItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListItemTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8FA5E6B26C5C84000A52E29 /* SDWebImage in Frameworks */,
 				A80DCC7E26C45A3D0056DF9D /* Services in Frameworks */,
 				A80DCC7C26C45A3C0056DF9D /* Models in Frameworks */,
 				A80DCC9426C46CA30056DF9D /* ViewModels in Frameworks */,
@@ -67,9 +79,10 @@
 		A80DCC5626C459260056DF9D /* PetsUIKit */ = {
 			isa = PBXGroup;
 			children = (
+				A8FA5E5826C5B49600A52E29 /* List */,
+				A8FA5E5726C5B49100A52E29 /* Favorites */,
 				A80DCC5726C459260056DF9D /* AppDelegate.swift */,
 				A80DCC5926C459260056DF9D /* SceneDelegate.swift */,
-				A80DCC5B26C459260056DF9D /* ViewController.swift */,
 				A80DCC5D26C459260056DF9D /* Main.storyboard */,
 				A80DCC6026C459270056DF9D /* Assets.xcassets */,
 				A80DCC6226C459270056DF9D /* LaunchScreen.storyboard */,
@@ -83,6 +96,42 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A8FA5E5726C5B49100A52E29 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				A8FA5E6026C5B8D400A52E29 /* Rows */,
+				A8FA5E5B26C5B4F600A52E29 /* FavoritesViewController.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		A8FA5E5826C5B49600A52E29 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				A8FA5E5D26C5B8B100A52E29 /* Rows */,
+				A8FA5E5926C5B4EB00A52E29 /* ListViewController.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		A8FA5E5D26C5B8B100A52E29 /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				A8FA5E6526C5B91800A52E29 /* ListItemTableViewCell.swift */,
+				A8FA5E6626C5B91800A52E29 /* ListItemTableViewCell.xib */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
+		A8FA5E6026C5B8D400A52E29 /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				A8FA5E6126C5B90400A52E29 /* FavoriteItemTableViewCell.swift */,
+				A8FA5E6226C5B90400A52E29 /* FavoriteItemTableViewCell.xib */,
+			);
+			path = Rows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,6 +156,7 @@
 				A80DCC7B26C45A3C0056DF9D /* Models */,
 				A80DCC7D26C45A3D0056DF9D /* Services */,
 				A80DCC9326C46CA30056DF9D /* ViewModels */,
+				A8FA5E6A26C5C84000A52E29 /* SDWebImage */,
 			);
 			productName = PetsUIKit;
 			productReference = A80DCC5426C459260056DF9D /* PetsUIKit.app */;
@@ -135,6 +185,9 @@
 				Base,
 			);
 			mainGroup = A80DCC4B26C459260056DF9D;
+			packageReferences = (
+				A8FA5E6926C5C84000A52E29 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = A80DCC5526C459260056DF9D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -149,7 +202,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8FA5E6426C5B90400A52E29 /* FavoriteItemTableViewCell.xib in Resources */,
 				A80DCC6426C459270056DF9D /* LaunchScreen.storyboard in Resources */,
+				A8FA5E6826C5B91800A52E29 /* ListItemTableViewCell.xib in Resources */,
 				A80DCC6126C459270056DF9D /* Assets.xcassets in Resources */,
 				A80DCC5F26C459260056DF9D /* Main.storyboard in Resources */,
 			);
@@ -162,9 +217,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A80DCC5C26C459260056DF9D /* ViewController.swift in Sources */,
 				A80DCC5826C459260056DF9D /* AppDelegate.swift in Sources */,
 				A80DCC5A26C459260056DF9D /* SceneDelegate.swift in Sources */,
+				A8FA5E6726C5B91800A52E29 /* ListItemTableViewCell.swift in Sources */,
+				A8FA5E6326C5B90400A52E29 /* FavoriteItemTableViewCell.swift in Sources */,
+				A8FA5E5C26C5B4F600A52E29 /* FavoritesViewController.swift in Sources */,
+				A8FA5E5A26C5B4EB00A52E29 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +425,17 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		A8FA5E6926C5C84000A52E29 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		A80DCC7726C45A3C0056DF9D /* Architecture */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -387,6 +456,11 @@
 		A80DCC9326C46CA30056DF9D /* ViewModels */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ViewModels;
+		};
+		A8FA5E6A26C5C84000A52E29 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A8FA5E6926C5C84000A52E29 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
