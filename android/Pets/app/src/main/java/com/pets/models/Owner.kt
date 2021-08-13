@@ -1,6 +1,13 @@
 package com.pets.models
 
-data class Owner(val name: String,
-                 val phone: String,
-                 val email: String,
-                 val address: String)
+import com.google.gson.annotations.SerializedName
+
+data class Owner(
+    @SerializedName("name")
+    val name: String,
+    @SerializedName("phone")
+    val phone: String,
+    @SerializedName("email")
+    val email: String,
+    @SerializedName("address")
+    val address: String)
