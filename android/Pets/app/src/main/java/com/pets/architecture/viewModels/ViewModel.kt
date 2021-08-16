@@ -4,8 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.pets.architecture.common.Dispatching
 import com.pets.architecture.stores.Store
 
-interface ViewModel<State, Event>: Dispatching<Event> {
-    interface ViewState
+interface ViewModel<State, Event, ViewState>: Dispatching<Event> {
     var state: MutableLiveData<ViewState>
     val store: Store<State, Event>
 

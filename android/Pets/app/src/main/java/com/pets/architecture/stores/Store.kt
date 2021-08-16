@@ -5,12 +5,13 @@ import com.pets.architecture.common.Dispatching
 import com.pets.architecture.reducers.Reducing
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class Store<State, Event>(var state: MutableLiveData<State>,
                           val reducer: Reducing<State, Event>): Dispatching<Event> {
 
     override fun dispatch(event: Event) {
-        GlobalScope.async {
+        GlobalScope.launch {
             val newEvent = reducer.reduce(state, event)
             newEvent?.let { dispatch(it) }
         }
