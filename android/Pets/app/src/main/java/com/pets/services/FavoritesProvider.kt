@@ -7,16 +7,11 @@ import com.pets.services.Interfaces.FavoriteService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class FavoritesProvider(val context: Context): FavoriteService {
-    private val file = "com.gorillalogic.architecture.favorites"
-    private val sharedPrefs: SharedPreferences by lazy {
-        context.getSharedPreferences(file, Context.MODE_PRIVATE)
-    }
+class FavoritesProvider: FavoriteService {
+    private val ids = mutableSetOf<Int>()
 
     override fun fetchFavorites(): MutableSet<Int> {
-        var ids = sharedPrefs.getStringSet("IDS", null)?.toMutableSet()
-        var intIds = ids?.map { it.toInt()  }?.toMutableList()
-        return intIds?.toMutableSet() ?: mutableSetOf()
+        return ids
     }
 
     override suspend fun fetchList(): List<Pet> {
@@ -35,16 +30,10 @@ class FavoritesProvider(val context: Context): FavoriteService {
     override fun addToFavorites(id: Int) {
         val ids = fetchFavorites()
         ids.add(id)
-        val editor = sharedPrefs.edit()
-        editor.putStringSet("IDS", ids.map { it.toString() }.toSet())
-        editor.apply()
     }
 
     override fun removeFromFavorites(id: Int) {
         val ids = fetchFavorites()
         ids.remove(id)
-        val editor = sharedPrefs.edit()
-        editor.putStringSet("IDS", ids.map { it.toString() }.toSet())
-        editor.apply()
     }
 }

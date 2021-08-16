@@ -3,16 +3,15 @@ package com.pets.domain.list
 import com.pets.models.Pet
 
 data class ListState(
-    val list: List<Pet>,
-    val favorites: List<Pet>,
-    val isLoading: Boolean
+    val list: MutableList<Pet> = emptyList<Pet>().toMutableList(),
+    val favorites: MutableList<Pet> = emptyList<Pet>().toMutableList(),
+    val isLoading: Boolean = false
 )
 
-sealed class ListEvent {
-    class fetchList: ListEvent()
-    class fetchFavorites: ListEvent()
-    class fetchListCompleted(val list: List<Pet>): ListEvent()
-    class fetchFavoriteCompleted(val list: List<Pet>): ListEvent()
-    class addToFavorites(id: Int)
-    class removeFromFavorites(id: Int)
-}
+sealed class ListEvent
+object FetchList: ListEvent()
+object FetchFavorites : ListEvent()
+data class FetchListCompleted(val list: List<Pet>): ListEvent()
+data class FetchFavoriteCompleted(val list: List<Pet>): ListEvent()
+data class AddToFavorites(val id: Int): ListEvent()
+data class RemoveFromFavorites(val id: Int): ListEvent()
