@@ -3,9 +3,9 @@ package com.pets.domain.list
 import com.pets.models.Pet
 
 data class ListState(
-    val list: MutableList<Pet> = emptyList<Pet>().toMutableList(),
-    val favorites: MutableList<Pet> = emptyList<Pet>().toMutableList(),
-    val isLoading: Boolean = false
+    var list: MutableList<Pet> = emptyList<Pet>().toMutableList(),
+    var favorites: MutableList<Pet> = emptyList<Pet>().toMutableList(),
+    var isLoading: Boolean = false
 )
 
 sealed class ListEvent

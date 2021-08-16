@@ -5,7 +5,7 @@ import retrofit2.http.GET
 
 interface FavoriteService {
     fun fetchFavorites(): Set<Int>
-    @GET
+    @GET(".")
     suspend fun fetchList(): List<Pet>
     fun addToFavorites(id: Int)
     fun removeFromFavorites(id: Int)

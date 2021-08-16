@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ServiceBuilder {
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://learning-challenge.herokuapp.com/pets")
+        .baseUrl("https://learning-challenge.herokuapp.com/pets/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 

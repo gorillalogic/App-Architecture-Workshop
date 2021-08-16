@@ -4,6 +4,6 @@ import com.pets.models.Pet
 import retrofit2.http.GET
 
 interface DataService {
-    @GET
+    @GET(".")
     suspend fun getList(): List<Pet>
 }

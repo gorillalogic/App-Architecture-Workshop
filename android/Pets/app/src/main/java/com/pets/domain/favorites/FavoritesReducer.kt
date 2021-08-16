@@ -1,5 +1,6 @@
 package com.pets.domain.favorites
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.pets.architecture.common.Depending
 import com.pets.architecture.reducers.Reducing
@@ -23,20 +24,25 @@ class FavoritesReducer: Reducing<FavoritesState, FavoritesEvent>,
     = withContext(Dispatchers.Main) {
         when(event) {
             is RemoveFromFavorites -> {
-                val favorites = state.value?.list ?: emptyList<Pet>().toMutableList()
-                favorites.removeAll { it.id == event.id }
-                state.postValue(FavoritesState(list = favorites,
-                    isLoading = state.value?.isLoading ?: false))
+                state.value?.let { fs ->
+                    val favorites = fs.list
+                    favorites.removeAll { it.id == event.id }
+                    state.postValue(fs.copy(list = favorites))
+                }
             }
 
             is FetchListCompleted -> {
-                state.postValue(FavoritesState(list = event.list.toMutableList(),
+                state.value?.let { fs ->
+                    state.postValue(fs.copy(list = event.list.toMutableList(),
                     isLoading = false))
+                }
             }
 
             is FetchList -> {
-                state.postValue(FavoritesState(list = emptyList<Pet>().toMutableList(),
-                isLoading = true))
+                state.value?.let {
+                    state.postValue(it.copy(list = emptyList<Pet>().toMutableList(),
+                    isLoading = true))
+                }
             }
         }
         return@withContext sideEffect(event = event)
