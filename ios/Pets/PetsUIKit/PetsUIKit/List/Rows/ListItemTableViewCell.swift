@@ -43,7 +43,6 @@ class ListItemTableViewCell: UITableViewCell {
     }
     
     @IBAction func onHeartTap(_ sender: Any) {
-        print("Clicked")
         onHeartTap?()
     }
 }

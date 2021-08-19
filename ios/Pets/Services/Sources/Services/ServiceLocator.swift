@@ -8,10 +8,8 @@
 import Foundation
 
 public class ServiceLocator {
-    public lazy var localService: DataService = LocalDataProvider()
-    public lazy var httpService: DataService = HttpDataProvider()
-    public lazy var favoriteService: FavoriteService = FavoritesProvider()
-    public lazy var logService: LoggingService = LogProvider()
-    
-    public init() { }
+    public static var localService: DataService = LocalDataProvider()
+    public static var httpService: DataService = HttpDataProvider()
+    public static var favoriteService: FavoriteService = FavoritesProvider()
+    public static var logService: LoggingService = LogProvider()
 }

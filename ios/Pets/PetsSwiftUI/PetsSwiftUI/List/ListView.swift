@@ -9,6 +9,7 @@ import SwiftUI
 import Architecture
 import ViewModels
 import Domain
+import Services
 
 struct ListView: View, ViewConfigurable {
     @ObservedObject var viewModel: ListViewModel
@@ -44,6 +45,16 @@ struct ListView: View, ViewConfigurable {
 
 struct ListView_Previews: PreviewProvider {
     static var previews: some View {
-        ListView(viewModel: .init(store: .init(initialState: .init(), reducer: .init())))
+        
+        let listVM = ListViewModel(
+            store: .init(
+                initialState: .init(),
+                reducer: .init(
+                    listService: ServiceLocator.localService,
+                    favoriteService: ServiceLocator.favoriteService)
+            )
+        )
+        
+        ListView(viewModel: listVM)
     }
 }

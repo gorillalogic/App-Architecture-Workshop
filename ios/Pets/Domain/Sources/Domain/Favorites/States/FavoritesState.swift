@@ -9,13 +9,13 @@ import Foundation
 import Models
 import Services
 
-@frozen public struct FavoritesState {
+public struct FavoritesState {
     public var list: Pets = []
     public var isLoading: Bool = false
     public init() { }
 }
 
-@frozen public enum FavoritesEvent {
+public enum FavoritesEvent {
     case fetchList
     case fetchListCompleted(pets: Pets)
     case removeFromFavorites(id: Int)

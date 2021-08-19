@@ -15,13 +15,21 @@ public struct ListReducer: Reducing, Depending {
     public typealias Event = ListEvent
     
     public struct Dependencies {
-        public var listService: DataService = ServiceLocator().httpService
-        public var favoriteService: FavoriteService = ServiceLocator().favoriteService
+        public var listService: DataService
+        public var favoriteService: FavoriteService
+        
+        public init(listService: DataService,
+                    favoriteService: FavoriteService) {
+            self.listService = listService
+            self.favoriteService = favoriteService
+        }
     }
     
-    public var dependencies = Dependencies()
+    public var dependencies: Dependencies
     
-    public init() { }
+    public init(listService: DataService, favoriteService: FavoriteService) {
+        self.dependencies = Dependencies(listService: listService, favoriteService: favoriteService)
+    }
     
     public func reduce(state: inout State, forEvent event: Event) -> Effect<Event> {
         switch event {

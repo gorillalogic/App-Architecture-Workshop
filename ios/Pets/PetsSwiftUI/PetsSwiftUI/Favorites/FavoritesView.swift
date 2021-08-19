@@ -8,6 +8,7 @@
 import SwiftUI
 import Architecture
 import ViewModels
+import Services
 
 struct FavoritesView: View, ViewConfigurable {
     @ObservedObject var  viewModel: FavoritesViewModel
@@ -37,6 +38,14 @@ struct FavoritesView: View, ViewConfigurable {
 
 struct FavoritesView_Previews: PreviewProvider {
     static var previews: some View {
-        FavoritesView(viewModel: .init(store: .init(initialState: .init(), reducer: .init())))
+        let viewModel = FavoritesViewModel(
+            store: .init(
+                initialState: .init(),
+                reducer: .init(
+                    service: ServiceLocator.favoriteService,
+                    logService: ServiceLocator.logService)
+            )
+        )
+        FavoritesView(viewModel: viewModel)
     }
 }

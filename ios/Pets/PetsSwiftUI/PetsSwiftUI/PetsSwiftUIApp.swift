@@ -6,12 +6,18 @@
 //
 
 import SwiftUI
+import URLImage
+import URLImageStore
 
 @main
 struct PetsSwiftUIApp: App {
     var body: some Scene {
-        WindowGroup {
+        let urlImageService = URLImageService(fileStore: URLImageFileStore(),
+                                          inMemoryStore: URLImageInMemoryStore())
+
+        return WindowGroup {
             ContentView()
+                .environment(\.urlImageService, urlImageService)
         }
     }
 }

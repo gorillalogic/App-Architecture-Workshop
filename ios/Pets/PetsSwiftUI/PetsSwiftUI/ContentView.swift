@@ -6,12 +6,32 @@
 //
 
 import SwiftUI
+import Services
+import ViewModels
 
 struct ContentView: View {
+    let listVM = ListViewModel(
+        store: .init(
+            initialState: .init(),
+            reducer: .init(
+                listService: ServiceLocator.httpService,
+                favoriteService: ServiceLocator.favoriteService)
+        )
+    )
+    
+    let favoritesVM = FavoritesViewModel(
+        store: .init(
+            initialState: .init(),
+            reducer: .init(
+                service: ServiceLocator.favoriteService,
+                logService: ServiceLocator.logService)
+        )
+    )
+    
     var body: some View {
         TabView {
             NavigationView {
-                ListView(viewModel: .init(store: .init(initialState: .init(), reducer: .init())))
+                ListView(viewModel: listVM)
             }
             .tabItem {
                 VStack {
@@ -21,7 +41,7 @@ struct ContentView: View {
             }
             
             NavigationView {
-                FavoritesView(viewModel: .init(store: .init(initialState: .init(), reducer: .init())))
+                FavoritesView(viewModel: favoritesVM)
             }
             .tabItem {
                 VStack {

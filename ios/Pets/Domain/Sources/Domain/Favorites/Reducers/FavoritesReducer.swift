@@ -14,13 +14,19 @@ public struct FavoritesReducer: Reducing, Depending {
     public typealias Event = FavoritesEvent
     
     public struct Dependencies {
-        public var service: FavoriteService = ServiceLocator().favoriteService
-        public var logService: LoggingService = ServiceLocator().logService
+        public var service: FavoriteService = ServiceLocator.favoriteService
+        public var logService: LoggingService = ServiceLocator.logService
+        public init(service: FavoriteService, logService: LoggingService) {
+            self.service = service
+            self.logService = logService
+        }
     }
     
-    public var dependencies = Dependencies()
+    public var dependencies: Dependencies
     
-    public init() { }
+    public init(service: FavoriteService, logService: LoggingService) {
+        self.dependencies = Dependencies(service: service, logService: logService)
+    }
     
     public func reduce(state: inout FavoritesState, forEvent event: FavoritesEvent) -> Effect<Event> {
         

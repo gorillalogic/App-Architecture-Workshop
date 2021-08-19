@@ -29,6 +29,7 @@ public final class Store<State, Event, Reducer: Reducing>: StoreType where Reduc
         }
         
         publisher
+            .subscribe(on: DispatchQueue.global())
             .receive(on: DispatchQueue.main)
             .sink(receiveValue: dispatch)
             .store(in: &cancellables)

@@ -9,7 +9,7 @@ import Foundation
 import Models
 import Services
 
-@frozen public struct ListState {
+public struct ListState {
     public var list: Pets = []
     public var favorites: Pets = []
     public var isLoading = false
@@ -19,7 +19,7 @@ import Services
     }
 }
 
-@frozen public enum ListEvent {
+public enum ListEvent {
     case fetchList
     case fetchFavorites
     case fetchListCompleted(pets: Pets)
