@@ -16,8 +16,6 @@ import com.gorillalogic.architecture.pets.Screen
 @Composable
 fun BottomBar(tabItems: List<Screen>, navController: NavController) {
     BottomNavigation() {
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
         tabItems.map {
             BottomNavigationItem(
                 icon= {

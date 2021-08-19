@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
@@ -65,16 +66,14 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Main(tabItems: List<Screen>,
-listViewModel: ListViewModel = viewModel(),
-favoritesViewModel: FavoritesViewModel = viewModel()) {
+fun Main(tabItems: List<Screen>) {
     val navController = rememberNavController()
-    Scaffold(bottomBar = {
+    Scaffold(
+        bottomBar = {
         BottomBar(tabItems = tabItems, navController = navController)
-    }) {
-        MainNavigation(navController = navController,
-        listViewModel = listViewModel,
-        favoritesViewModel = favoritesViewModel)
+        }
+    ) {
+        MainNavigation(navController = navController)
     }
 }
 

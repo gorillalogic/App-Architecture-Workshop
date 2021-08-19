@@ -15,8 +15,6 @@ import com.pets.viewModels.list.ListViewModel
 @Composable
 fun PetList(viewModel: ListViewModel) {
     val state by viewModel.state.observeAsState(ListViewModel.ViewState())
-    viewModel.dispatch(FetchList)
-    viewModel.dispatch(FetchFavorites)
     LazyColumn {
         items(state.list) { pet ->
             PetCard(pet = pet, isFavorite = state.favorites.contains(pet)) {
