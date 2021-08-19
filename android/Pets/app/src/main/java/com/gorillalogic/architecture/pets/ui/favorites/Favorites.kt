@@ -20,21 +20,28 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun Favorites(viewModel: FavoritesViewModel) {
     val state by viewModel.state.observeAsState(FavoritesViewModel.ViewState())
-            Column(modifier = Modifier
-                .padding(30.dp)
-                .fillMaxSize()
-                .wrapContentSize(Alignment.Center)
-            ) {
-                if (state.isLoading) {
-                    CircularProgressIndicator()
+    if (state.isLoading) {
+                    Column(modifier = Modifier
+                        .padding(30.dp)
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                    ) {
+                        CircularProgressIndicator()
+                    }
                 }
                 else {
                 if (state.list.isEmpty()) {
-                    Text(
-                        text = "No favorites yet!",
-                        fontSize = 30.sp,
-                        textAlign = TextAlign.Center
-                    )
+                    Column(modifier = Modifier
+                        .padding(30.dp)
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                    ) {
+                        Text(
+                            text = "No favorites yet!",
+                            fontSize = 30.sp,
+                            textAlign = TextAlign.Center
+                        )
+                    }
                 }
                 else {
                     LazyColumn {
@@ -46,7 +53,6 @@ fun Favorites(viewModel: FavoritesViewModel) {
                             }
                         }
                     }
-            }
-        }
+                }
         }
 }

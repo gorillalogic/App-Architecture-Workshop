@@ -1,23 +1,27 @@
 package com.gorillalogic.architecture.pets.ui.list
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.Card
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.gorillalogic.architecture.pets.R
 import com.pets.models.Pet
+import com.skydoves.landscapist.coil.CoilImage
 import com.skydoves.landscapist.glide.GlideImage
 
 
@@ -25,6 +29,7 @@ import com.skydoves.landscapist.glide.GlideImage
 fun PetCard(pet: Pet, isFavorite: Boolean, onLikeClick: () -> Unit) {
     Card(
         modifier = Modifier
+            .height(250.dp)
             .fillMaxWidth()
             .padding(15.dp)
             .clickable { },
@@ -33,27 +38,41 @@ fun PetCard(pet: Pet, isFavorite: Boolean, onLikeClick: () -> Unit) {
         Column(
             modifier = Modifier.padding(15.dp)
         ) {
-            GlideImage(
+            CoilImage(
                 imageModel = pet.petImage,
-                // Crop, Fit, Inside, FillHeight, FillWidth, None
                 contentScale = ContentScale.FillBounds,
-                // shows an image with a circular revealed animation.
-                circularRevealedEnabled = true
-                // shows a placeholder ImageBitmap when loading.
+                failure = {
+                    Image(
+                        painterResource(R.drawable.pawprint),
+                        contentDescription = "",
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                },
+                loading = {
+                    Image(
+                        painterResource(R.drawable.pawprint),
+                        contentDescription = "",
+                        contentScale = ContentScale.FillBounds,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                },
+                modifier = Modifier
+                    .height(150.dp)
             )
 
-            Row() {
-                Text(
-                    buildAnnotatedString {
-                        withStyle(style = SpanStyle(fontWeight = FontWeight.W900, color = Color(0xFF4552B8))
-                        ) {
-                            append(pet.name)
-                        }
-                    }
-                )
-
-                Button(onClick = onLikeClick) {
-                    Text(text = if (isFavorite) "DisLike" else "Like")
+            Row(verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceEvenly) {
+                Text(text = pet.name,
+                    fontSize = 35.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color(R.color.purple_200))
+                IconButton(onClick = onLikeClick) {
+                    Icon(
+                        if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
+                        contentDescription = "Unlike",
+                        tint = Color(R.color.purple_500)
+                    )
                 }
             }
         }
