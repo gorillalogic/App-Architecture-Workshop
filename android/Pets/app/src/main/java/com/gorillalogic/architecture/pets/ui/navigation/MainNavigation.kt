@@ -14,18 +14,15 @@ import com.pets.viewModels.favorites.FavoritesViewModel
 import com.pets.viewModels.list.ListViewModel
 
 @Composable
-fun MainNavigation(navController: NavHostController) {
+fun MainNavigation(navController: NavHostController,
+listViewModel: ListViewModel,
+favoritesViewModel: FavoritesViewModel) {
     NavHost(navController, startDestination = Screen.PetList.route) {
         composable(Screen.PetList.route) {
-            val viewModel: ListViewModel = viewModel()
-            PetList(viewModel)
-            viewModel.dispatch(FetchList)
-            viewModel.dispatch(FetchFavorites)
+            PetList(listViewModel)
         }
         composable(Screen.Favorites.route) {
-            val viewModel: FavoritesViewModel = viewModel()
-            Favorites(viewModel)
-            viewModel.dispatch(com.pets.domain.favorites.FetchList)
+            Favorites(favoritesViewModel)
         }
     }
 }

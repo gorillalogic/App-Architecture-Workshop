@@ -68,11 +68,20 @@ fun PetCard(pet: Pet, isFavorite: Boolean, onLikeClick: () -> Unit) {
                     fontWeight = FontWeight.Bold,
                     color = Color(R.color.purple_200))
                 IconButton(onClick = onLikeClick) {
-                    Icon(
-                        if (isFavorite) Icons.Filled.Favorite else Icons.Outlined.Favorite,
-                        contentDescription = "Unlike",
-                        tint = Color(R.color.purple_500)
-                    )
+                    if (isFavorite)
+                        Icon(
+                            painterResource(id = R.drawable.heart_fill),
+                            contentDescription = "Unlike",
+                            tint = Color(R.color.purple_500),
+                            modifier = Modifier.width(25.dp)
+                        )
+                    else
+                        Icon(
+                            painterResource(id = R.drawable.heart),
+                            contentDescription = "Unlike",
+                            tint = Color(R.color.purple_500),
+                            modifier = Modifier.width(25.dp)
+                        )
                 }
             }
         }

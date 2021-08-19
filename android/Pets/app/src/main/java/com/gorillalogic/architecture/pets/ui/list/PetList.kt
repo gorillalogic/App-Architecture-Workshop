@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -23,6 +24,9 @@ import com.pets.viewModels.list.ListViewModel
 @Composable
 fun PetList(viewModel: ListViewModel) {
     val state by viewModel.state.observeAsState(ListViewModel.ViewState())
+    LaunchedEffect(true) {
+        viewModel.dispatch(FetchList)
+    }
     if (state.isLoading) {
         Column(modifier = Modifier
             .padding(30.dp)

@@ -6,6 +6,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -15,11 +16,15 @@ import com.pets.domain.favorites.RemoveFromFavorites
 import com.pets.viewModels.favorites.FavoritesViewModel
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.sp
+import com.pets.domain.list.FetchList
 
 
 @Composable
 fun Favorites(viewModel: FavoritesViewModel) {
     val state by viewModel.state.observeAsState(FavoritesViewModel.ViewState())
+    LaunchedEffect(true) {
+        viewModel.dispatch(com.pets.domain.favorites.FetchList)
+    }
     if (state.isLoading) {
                     Column(modifier = Modifier
                         .padding(30.dp)

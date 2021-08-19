@@ -52,13 +52,17 @@ sealed class Screen(val route: String, val title : String, @DrawableRes val icon
 
 class MainActivity : ComponentActivity() {
     private val tabItems = listOf(Screen.PetList, Screen.Favorites)
+    val listViewModel = ListViewModel()
+    val favoritesViewModel = FavoritesViewModel()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             PetsTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                    Main(tabItems = tabItems)
+                    Main(tabItems = tabItems,
+                        listViewModel = listViewModel,
+                        favoritesViewModel = favoritesViewModel)
                 }
             }
         }
@@ -66,14 +70,18 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Main(tabItems: List<Screen>) {
+fun Main(tabItems: List<Screen>,
+listViewModel: ListViewModel,
+favoritesViewModel: FavoritesViewModel) {
     val navController = rememberNavController()
     Scaffold(
         bottomBar = {
         BottomBar(tabItems = tabItems, navController = navController)
         }
     ) {
-        MainNavigation(navController = navController)
+        MainNavigation(navController = navController,
+        listViewModel = listViewModel,
+        favoritesViewModel = favoritesViewModel)
     }
 }
 

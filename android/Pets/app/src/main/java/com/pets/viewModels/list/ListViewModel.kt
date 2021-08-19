@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.pets.architecture.stores.Store
 import com.pets.architecture.viewModels.ViewModel
+import com.pets.domain.list.FetchList
 import com.pets.domain.list.ListEvent
 import com.pets.domain.list.ListReducer
 import com.pets.domain.list.ListState

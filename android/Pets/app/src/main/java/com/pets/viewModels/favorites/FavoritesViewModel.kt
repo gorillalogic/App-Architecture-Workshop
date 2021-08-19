@@ -8,6 +8,7 @@ import com.pets.architecture.viewModels.ViewModel
 import com.pets.domain.favorites.FavoritesEvent
 import com.pets.domain.favorites.FavoritesReducer
 import com.pets.domain.favorites.FavoritesState
+import com.pets.domain.favorites.FetchList
 import com.pets.models.Pet
 
 class FavoritesViewModel: ViewModel<FavoritesState, FavoritesEvent, FavoritesViewModel.ViewState>,
