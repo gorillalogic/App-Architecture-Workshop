@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.gorillalogic.architecture.pets.Favorites
-import com.gorillalogic.architecture.pets.PetList
 import com.gorillalogic.architecture.pets.Screen
+import com.gorillalogic.architecture.pets.ui.favorites.Favorites
+import com.gorillalogic.architecture.pets.ui.list.PetList
 import com.pets.viewModels.favorites.FavoritesViewModel
 import com.pets.viewModels.list.ListViewModel
 
