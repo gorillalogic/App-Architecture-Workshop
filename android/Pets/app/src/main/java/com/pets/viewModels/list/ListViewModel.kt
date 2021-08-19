@@ -12,8 +12,8 @@ import com.pets.domain.list.ListState
 import com.pets.models.Pet
 
 class ListViewModel: ViewModel<ListState, ListEvent, ListViewModel.ViewState>, androidx.lifecycle.ViewModel() {
-    data class ViewState(val list: MutableList<Pet> = emptyList<Pet>().toMutableList(),
-    val favorites: MutableList<Pet> = emptyList<Pet>().toMutableList(),
+    data class ViewState(val list: List<Pet> = emptyList(),
+    val favorites: List<Pet> = emptyList(),
     val isLoading: Boolean = false)
 
     override var state: MutableLiveData<ViewState> = MutableLiveData(ViewState())

@@ -14,7 +14,9 @@ class Store<State, Event>(var state: MutableLiveData<State>,
     override fun dispatch(event: Event) {
         GlobalScope.launch {
             val newEvent = reducer.reduce(state, event)
-            newEvent?.let { dispatch(it) }
+            newEvent?.let {
+                dispatch(it)
+            }
         }
     }
 }

@@ -21,11 +21,11 @@ class FavoritesReducer: Reducing<FavoritesState, FavoritesEvent>,
         get() = Dependencies()
 
     override suspend fun reduce(state: MutableLiveData<FavoritesState>, event: FavoritesEvent): FavoritesEvent?
-    = withContext(Dispatchers.Main) {
+    = withContext(Dispatchers.IO) {
         when(event) {
             is RemoveFromFavorites -> {
                 state.value?.let { fs ->
-                    val favorites = fs.list
+                    var favorites = fs.list.toMutableList()
                     favorites.removeAll { it.id == event.id }
                     state.postValue(fs.copy(list = favorites))
                 }
@@ -33,15 +33,14 @@ class FavoritesReducer: Reducing<FavoritesState, FavoritesEvent>,
 
             is FetchListCompleted -> {
                 state.value?.let { fs ->
-                    state.postValue(fs.copy(list = event.list.toMutableList(),
+                    state.postValue(fs.copy(list = event.list,
                     isLoading = false))
                 }
             }
 
             is FetchList -> {
                 state.value?.let {
-                    state.postValue(it.copy(list = emptyList<Pet>().toMutableList(),
-                    isLoading = true))
+                    state.postValue(it.copy(list = emptyList(), isLoading = true))
                 }
             }
         }

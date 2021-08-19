@@ -46,8 +46,8 @@ import com.pets.viewModels.list.ListViewModel
 import com.skydoves.landscapist.glide.GlideImage
 
 sealed class Screen(val route: String, val title : String, @DrawableRes val icon : Int) {
-    object PetList : Screen(route = "petlist", title = "Pets", icon= R.drawable.ic_launcher_background)
-    object Favorites : Screen(route = "favorites", title = "Favorites", icon= R.drawable.ic_launcher_background)
+    object PetList : Screen(route = "petlist", title = "Pets", icon= R.drawable.pawprint)
+    object Favorites : Screen(route = "favorites", title = "Favorites", icon= R.drawable.heart_fill)
 }
 
 class MainActivity : ComponentActivity() {

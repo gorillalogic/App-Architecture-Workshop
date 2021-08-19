@@ -4,7 +4,7 @@ import com.pets.models.Pet
 import com.pets.services.Interfaces.LogAction
 
 data class FavoritesState(
-    var list: MutableList<Pet> = emptyList<Pet>().toMutableList(),
+    var list: List<Pet> = emptyList<Pet>(),
     var isLoading: Boolean = false
 )
 

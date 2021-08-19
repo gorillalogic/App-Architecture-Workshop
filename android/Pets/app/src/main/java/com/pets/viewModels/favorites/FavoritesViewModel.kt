@@ -12,7 +12,7 @@ import com.pets.models.Pet
 
 class FavoritesViewModel: ViewModel<FavoritesState, FavoritesEvent, FavoritesViewModel.ViewState>,
 androidx.lifecycle.ViewModel() {
-    data class ViewState(val list: MutableList<Pet> = emptyList<Pet>().toMutableList(),
+    data class ViewState(val list: List<Pet> = emptyList(),
                          val isLoading: Boolean = true)
 
     override var state: MutableLiveData<ViewState> = MutableLiveData()

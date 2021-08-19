@@ -15,10 +15,11 @@ class ListReducer: Reducing<ListState, ListEvent>, Depending<ListReducer.Depende
     class Dependencies {
         val listService = ServiceLocator.dataService
         val favoriteService = ServiceLocator.favoriteService
+        val logService = ServiceLocator.logService
     }
 
     override val dependencies: Dependencies
-        get() = ListReducer.Dependencies()
+        get() = Dependencies()
 
     override suspend fun reduce(state: MutableLiveData<ListState>, event: ListEvent): ListEvent? =
         withContext(Dispatchers.IO) {
@@ -32,7 +33,7 @@ class ListReducer: Reducing<ListState, ListEvent>, Depending<ListReducer.Depende
 
                 is FetchListCompleted -> {
                     state.value?.let {
-                        state.postValue(it.copy(list = event.list.toMutableList(),
+                        state.postValue(it.copy(list = event.list,
                         isLoading = false))
                     }
                 }
@@ -46,7 +47,7 @@ class ListReducer: Reducing<ListState, ListEvent>, Depending<ListReducer.Depende
 
                 is FetchFavoriteCompleted -> {
                     state.value?.let {
-                        state.postValue(it.copy(favorites = event.list.toMutableList()))
+                        state.postValue(it.copy(favorites = event.list))
                     }
                 }
 
@@ -54,7 +55,7 @@ class ListReducer: Reducing<ListState, ListEvent>, Depending<ListReducer.Depende
                     val favorite = state.value?.list?.firstOrNull { it.id == event.id }
                     favorite?.let { pet ->
                         state.value?.let {
-                            val favorites = it.favorites
+                            val favorites = it.favorites.toMutableList()
                             favorites.add(pet)
                             state.postValue(it.copy(favorites = favorites))
                         }
@@ -63,7 +64,7 @@ class ListReducer: Reducing<ListState, ListEvent>, Depending<ListReducer.Depende
 
                 is RemoveFromFavorites -> {
                     state.value?.let { ls ->
-                        val favorites = ls.favorites
+                        val favorites = ls.favorites.toMutableList()
                         favorites.removeAll { it.id == event.id }
                         state.postValue(ls.copy(favorites = favorites))
                     }
@@ -73,6 +74,7 @@ class ListReducer: Reducing<ListState, ListEvent>, Depending<ListReducer.Depende
         }
 
     private suspend fun sideEffect(event: ListEvent): ListEvent? {
+        dependencies.logService.log(event)
         when (event) {
             is FetchList -> {
                 val list = dependencies.listService.getList()
