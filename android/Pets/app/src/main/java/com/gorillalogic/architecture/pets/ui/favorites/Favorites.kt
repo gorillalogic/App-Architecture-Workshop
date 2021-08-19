@@ -26,38 +26,38 @@ fun Favorites(viewModel: FavoritesViewModel) {
         viewModel.dispatch(com.pets.domain.favorites.FetchList)
     }
     if (state.isLoading) {
-                    Column(modifier = Modifier
-                        .padding(30.dp)
-                        .fillMaxSize()
-                        .wrapContentSize(Alignment.Center)
-                    ) {
-                        CircularProgressIndicator()
-                    }
-                }
-                else {
-                if (state.list.isEmpty()) {
-                    Column(modifier = Modifier
-                        .padding(30.dp)
-                        .fillMaxSize()
-                        .wrapContentSize(Alignment.Center)
-                    ) {
-                        Text(
-                            text = "No favorites yet!",
-                            fontSize = 30.sp,
-                            textAlign = TextAlign.Center
+        Column(
+            modifier = Modifier
+                .padding(30.dp)
+                .fillMaxSize()
+                .wrapContentSize(Alignment.Center)
+        ) {
+            CircularProgressIndicator()
+        }
+    } else {
+        if (state.list.isEmpty()) {
+            Column(
+                modifier = Modifier
+                    .padding(30.dp)
+                    .fillMaxSize()
+                    .wrapContentSize(Alignment.Center)
+            ) {
+                Text(
+                    text = "No favorites yet!",
+                    fontSize = 30.sp,
+                    textAlign = TextAlign.Center
+                )
+            }
+        } else {
+            LazyColumn {
+                items(state.list) { pet ->
+                    PetRow(pet = pet) {
+                        viewModel.dispatch(
+                            RemoveFromFavorites(id = pet.id)
                         )
                     }
                 }
-                else {
-                    LazyColumn {
-                        items(state.list) { pet ->
-                            PetRow(pet = pet) {
-                                viewModel.dispatch(
-                                    RemoveFromFavorites(id = pet.id)
-                                )
-                            }
-                        }
-                    }
-                }
+            }
         }
+    }
 }
