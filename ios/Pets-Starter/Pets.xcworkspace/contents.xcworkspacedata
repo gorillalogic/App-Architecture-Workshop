@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:ViewModels">
+   </FileRef>
+   <FileRef
+      location = "group:PetsUIKit/PetsUIKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:PetsSwiftUI/PetsSwiftUI.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Domain">
+   </FileRef>
+   <FileRef
+      location = "group:Architecture">
+   </FileRef>
+   <FileRef
+      location = "group:Services">
+   </FileRef>
+   <FileRef
+      location = "group:Models">
+   </FileRef>
+</Workspace>
